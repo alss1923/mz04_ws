@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include filename="$(find nachi_mz04_support)/urdf/common_constants.xacro"/>
+
+	<xacro:macro name="nachi_mz04" params="prefix">
+
+		<!-- links: main serial chain -->
+		<link name="${prefix}base_link">
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/visual/base_link.dae"/>
+				</geometry>
+			</visual>
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/collision/base_c.STL"/>
+				</geometry>
+			</collision>
+		</link>
+		<link name="${prefix}link_1">
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/visual/link1.dae"/>
+				</geometry>
+			</visual>
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/collision/link1_c.STL"/>
+				</geometry>
+			</collision>
+		</link>
+		<link name="${prefix}link_2">
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/visual/link2.dae"/>
+				</geometry>
+			</visual>
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/collision/link2_c.STL"/>
+				</geometry>
+			</collision>
+		</link>
+		<link name="${prefix}link_3">
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/visual/link3.dae"/>
+				</geometry>
+			</visual>
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/collision/link3_c.STL"/>
+				</geometry>
+			</collision>
+		</link>
+		<link name="${prefix}link_4">
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/visual/link4.dae"/>
+				</geometry>
+			</visual>
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/collision/link4_c.STL"/>
+				</geometry>
+			</collision>
+		</link>
+		<link name="${prefix}link_5">
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/visual/link5.dae"/>
+				</geometry>
+			</visual>
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/collision/link5_c.STL"/>
+				</geometry>
+			</collision>
+		</link>
+		<link name="${prefix}link_6">
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/visual/link6.dae"/>
+				</geometry>
+			</visual>
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://nachi_mz04_support/meshes/collision/link6_c.STL"/>
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- joints: main serial chain -->
+		<joint name="${prefix}joint_1" type="revolute">
+			<origin xyz="0 0 0.170" rpy="0 0 0"/>
+			<parent link="${prefix}base_link"/>
+			<child link="${prefix}link_1"/>
+			<axis xyz="0 0 1"/>
+			<limit lower="-${170.0*pi/180.0}" upper="${170.0*pi/180.0}" effort="0" velocity="3.67"/>
+		</joint>
+		<joint name="${prefix}joint_2" type="revolute">
+			<origin xyz="0 0 0.170" rpy="${pi_2} ${pi_2} 0"/>
+			<parent link="${prefix}link_1"/>
+			<child link="${prefix}link_2"/>
+			<axis xyz="0 0 1"/>
+			<limit lower="-${50.0*pi/180.0}" upper="${170.0*pi/180.0}" effort="0" velocity="3.67"/>
+		</joint>
+		<joint name="${prefix}joint_3" type="revolute">
+			<origin xyz="0 0.260 0" rpy="0 0 0"/>
+			<parent link="${prefix}link_2"/>
+			<child link="${prefix}link_3"/>
+			<axis xyz="0 0 1"/>
+			<limit lower="-${60.0*pi/180.0}" upper="${170.0*pi/180.0}" effort="0" velocity="3.67"/>
+		</joint>
+		<joint name="${prefix}joint_4" type="revolute">
+			<origin xyz="0 0.025 0" rpy="${pi_2} 0 ${pi_2}"/>
+			<parent link="${prefix}link_3"/>
+			<child link="${prefix}link_4"/>
+			<axis xyz="0 0 1"/>
+			<limit lower="-${170.0*pi/180.0}" upper="${170.0*pi/180.0}" effort="0" velocity="3.67"/>
+		</joint>
+		<joint name="${prefix}joint_5" type="revolute">
+			<origin xyz="0 0 0.280" rpy="-${pi_2} -${pi_2} 0"/>
+			<parent link="${prefix}link_4"/>
+			<child link="${prefix}link_5"/>
+			<axis xyz="0 0 1"/>
+			<limit lower="-${110.0*pi/180.0}" upper="${110.0*pi/180.0}" effort="0" velocity="3.67"/>
+		</joint>
+		<joint name="${prefix}joint_6" type="revolute">
+			<origin xyz="0.072 0 0" rpy="${pi_2} 0 ${pi_2}"/>
+			<parent link="${prefix}link_5"/>
+			<child link="${prefix}link_6"/>
+			<axis xyz="0 0 1"/>
+			<limit lower="-${110.0*pi/180.0}" upper="${110.0*pi/180.0}" effort="0" velocity="3.67"/>
+		</joint>
+
+		<!-- ROS-Industrial 'base' frame: base_link to Nachi World Coordinates transform -->
+		<link name="${prefix}world" />
+		<joint name="${prefix}world_joint" type="fixed">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<parent link="${prefix}world" />
+			<child link="${prefix}base_link"/>
+		</joint>
+
+		<!-- ROS-Industrial 'tool0' frame: all-zeros tool frame -->
+		<link name="${prefix}tool0" />
+		<joint name="${prefix}link_6-tool0" type="fixed">
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<parent link="${prefix}link_6" />
+			<child link="${prefix}tool0" />
+		</joint>
+	</xacro:macro>
+</robot>

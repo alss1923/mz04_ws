@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<robot name="nachi_mz04" xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include filename="$(find nachi_mz04_support)/urdf/mz04_macro.xacro"/>
+	<xacro:nachi_mz04 prefix=""/>
+</robot>
