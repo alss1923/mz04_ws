@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="nachi_driver" type="nachi_driver_node" name="nachi_driver_node">
+		<param name="speed" type="double" value="20"/>.
+	</node>
+</launch>
