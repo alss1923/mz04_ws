@@ -17,7 +17,7 @@ vector<double> JointEfforts(6,0.0);
 vector<vector<double> > GoalPositions;
 bool move_start = false;
 
-void goalCB(actionlib::ServerGoalHandle<control_msgs::FollowJointTrajectoryAction> &gh)
+void goalCB(actionlib::ServerGoalHandle<control_msgs::FollowJointTrajectoryAction> &&gh)
 {
     gh.setAccepted();
     actionlib::ActionServer<control_msgs::FollowJointTrajectoryAction>::Goal goal = *gh.getGoal();
